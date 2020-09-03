@@ -30,6 +30,8 @@ class SubwordNMTBPE(object):
                 '--codes', codes,
                 '--separator', args.bpe_separator,
             ])
+            import codecs
+            bpe_args.codes = codecs.open(codes, encoding='utf-8')
             self.bpe = apply_bpe.BPE(
                 bpe_args.codes,
                 bpe_args.merges,
